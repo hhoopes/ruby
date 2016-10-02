@@ -34,20 +34,20 @@ class YatzyTest < MiniTest::Unit::TestCase
   end
 
   def test_fours
-    assert_equal 0, Yatzy.new(1,2,3,5,6).fours
-    assert_equal 4, Yatzy.new(4,5,5,5,5).fours
-    assert_equal 8, Yatzy.new(4,4,5,5,5).fours
+    assert_equal 0, Yatzy.fours(1,2,3,5,6)
+    assert_equal 4, Yatzy.fours(4,5,5,5,5)
+    assert_equal 8, Yatzy.fours(4,4,5,5,5)
   end
 
   def test_fives
-    assert_equal 0, Yatzy.new(1,2,3,4,6).fives
-    assert_equal 15, Yatzy.new(4,4,5,5,5).fives
-    assert_equal 20, Yatzy.new(4,5,5,5,5).fives
+    assert_equal 0, Yatzy.fives(1,2,3,4,6)
+    assert_equal 15, Yatzy.fives(4,4,5,5,5)
+    assert_equal 20, Yatzy.fives(4,5,5,5,5)
   end
 
   def test_sixes
-    assert_equal 0, Yatzy.new(4,4,4,5,5).sixes
-    assert_equal 6, Yatzy.new(4,4,6,5,5).sixes
-    assert_equal 18, Yatzy.new(6,5,6,6,5).sixes
+    assert_equal 0, Yatzy.sixes(4,4,4,5,5)
+    assert_equal 6, Yatzy.sixes(4,4,6,5,5)
+    assert_equal 18, Yatzy.sixes(6,5,6,6,5)
   end
 end
