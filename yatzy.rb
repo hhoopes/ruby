@@ -19,25 +19,8 @@ class Yatzy
     identical_rolls?(rolls) ? 50 : 0
   end
 
-  def self.ones( d1,  d2,  d3,  d4,  d5)
-    sum = 0
-    if (d1 == 1)
-      sum += 1
-    end
-    if (d2 == 1)
-      sum += 1
-    end
-    if (d3 == 1)
-      sum += 1
-    end
-    if (d4 == 1)
-      sum += 1
-    end
-    if (d5 == 1)
-      sum += 1
-    end
-
-    sum
+  def self.ones(* rolls)
+    rolls.count { |roll| 1 == roll }
   end
 
   def self.twos( d1,  d2,  d3,  d4,  d5)
