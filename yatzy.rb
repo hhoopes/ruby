@@ -4,7 +4,7 @@ class Yatzy
   end
 
   def self.yatzy(* rolls)
-    yatze_roll?(rolls) ? 50 : 0
+    yatzy_roll?(rolls) ? 50 : 0
   end
 
   def self.ones(* rolls)
@@ -33,7 +33,7 @@ class Yatzy
 
   private
 
-  def self.yatze_roll?(roll_array)
+  def self.yatzy_roll?(roll_array)
     benchmark = roll_array.first
     roll_array.all? { |roll| roll == benchmark }
   end
