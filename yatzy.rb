@@ -16,9 +16,7 @@ class Yatzy
   end
 
   def self.yatzy(* rolls)
-    benchmark = rolls.first
-    similarity = rolls.all? {|roll| roll == benchmark}
-    similarity ? 50 : 0
+    identical_rolls?(rolls) ? 50 : 0
   end
 
   def self.ones( d1,  d2,  d3,  d4,  d5)
@@ -111,5 +109,12 @@ class Yatzy
       end
     end
     return sum
+  end
+
+  private
+
+  def self.identical_rolls?(roll_array)
+    benchmark = roll_array.first
+    roll_array.all? { |roll| roll == benchmark }
   end
 end
