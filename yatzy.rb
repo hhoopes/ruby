@@ -3,12 +3,7 @@ require 'pry'
 class Yatzy
 
   def initialize(d1, d2, d3, d4, d5)
-    @dice = [0]*5
-    @dice[0] = d1
-    @dice[1] = d2
-    @dice[2] = d3
-    @dice[3] = d4
-    @dice[4] = d5
+    @dice = [d1, d2, d3, d4, d5]
   end
 
   def self.chance(* rolls)
@@ -20,78 +15,27 @@ class Yatzy
   end
 
   def self.ones(* rolls)
-    rolls.count { |roll| 1 == roll }
+    tally(1, rolls)
   end
 
-  def self.twos( d1,  d2,  d3,  d4,  d5)
-    sum = 0
-    if (d1 == 2)
-      sum += 2
-    end
-    if (d2 == 2)
-      sum += 2
-    end
-    if (d3 == 2)
-      sum += 2
-    end
-    if (d4 == 2)
-      sum += 2
-    end
-    if (d5 == 2)
-      sum += 2
-    end
-    return sum
+  def self.twos(* rolls)
+    tally(2, rolls)
   end
 
-  def self.threes( d1,  d2,  d3,  d4,  d5)
-    s = 0
-    if (d1 == 3)
-      s += 3
-    end
-    if (d2 == 3)
-      s += 3
-    end
-    if (d3 == 3)
-      s += 3
-    end
-    if (d4 == 3)
-      s += 3
-    end
-    if (d5 == 3)
-      s += 3
-    end
-    return s
+  def self.threes(* rolls)
+    tally(3, rolls)
   end
 
   def fours
-    sum = 0
-    for at in Array 0..4
-      if (@dice[at] == 4)
-        sum += 4
-      end
-    end
-    return sum
+    self.class.tally(4, @dice)
   end
 
-  def fives()
-    s = 0
-    i = 0
-    for i in (Range.new(0, @dice.size))
-      if (@dice[i] == 5)
-        s = s + 5
-      end
-    end
-    s
+  def fives
+    self.class.tally(5, @dice)
   end
 
   def sixes
-    sum = 0
-    for at in 0..@dice.length
-      if (@dice[at] == 6)
-        sum = sum + 6
-      end
-    end
-    return sum
+    self.class.tally(6, @dice)
   end
 
   private
@@ -99,5 +43,10 @@ class Yatzy
   def self.identical_rolls?(roll_array)
     benchmark = roll_array.first
     roll_array.all? { |roll| roll == benchmark }
+  end
+
+  def self.tally(factor, roll_array)
+    count = roll_array.count { |roll| factor == roll }
+    count * factor
   end
 end
