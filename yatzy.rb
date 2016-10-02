@@ -15,18 +15,10 @@ class Yatzy
     rolls.reduce(:+)
   end
 
-  def self.yatzy(d1, d2, d3, d4, d5)
-    dice = [d1, d2, d3, d4, d5]
-    counts = [0]*(dice.length+1)
-    for die in dice do
-      counts[die-1] += 1
-    end
-    for i in 0..counts.size do
-      if counts[i] == 5
-        return 50
-      end
-    end
-    return 0
+  def self.yatzy(* rolls)
+    benchmark = rolls.first
+    similarity = rolls.all? {|roll| roll == benchmark}
+    similarity ? 50 : 0
   end
 
   def self.ones( d1,  d2,  d3,  d4,  d5)
